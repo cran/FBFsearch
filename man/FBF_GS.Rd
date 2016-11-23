@@ -42,7 +42,7 @@ FBF_GS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 
 \references{
-  D. Altomare, G. Consonni and L. La Rocca (2013). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Biometrics}.
+  D. Altomare, G. Consonni and L. La Rocca (2012). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Article submitted to Biometric Methodology}.
 }
 
 
@@ -52,6 +52,8 @@ FBF_GS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 
 \examples{
+
+## Not run:
 
 data(SimDag6) 
 
@@ -72,8 +74,12 @@ G_med[M_q<0.5]=0 #median probability DAG
 G_high=M_G[1:q,1:q] #Highest Posterior Probability DAG (HPP)
 pp_high=M_P[1] #Posterior Probability of the HPP
 
-sum(sum(abs(G_med-Gt))) #Structural Hamming Distance between the true DAG and the median probability DAG
-sum(sum(abs(G_high-Gt))) #Structural Hamming Distance between the true DAG and the highest probability DAG
+#Structural Hamming Distance between the true DAG and the median probability DAG
+sum(sum(abs(G_med-Gt)))
+#Structural Hamming Distance between the true DAG and the highest probability DAG 
+sum(sum(abs(G_high-Gt)))
+
+## End(Not run) 
 
 
 }

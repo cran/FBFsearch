@@ -5,7 +5,7 @@
 
 
 \title{Moment Fractional Bayes Factor Stochastic Search for Regression Models}
-\description{Estimate the edge inclusion probabilities for a regression model, using the moment fractional Bayes factor approach.
+\description{Estimate the edge inclusion probabilities for a regression model (Y(q) on Y(q-1),...,Y(1)) with q variables from observational data, using the moment fractional Bayes factor approach.
 }
 
 
@@ -41,8 +41,9 @@ FBF_RS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 
 \references{
-  D. Altomare, G. Consonni and L. La Rocca (2013). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Biometrics}.
+  D. Altomare, G. Consonni and L. LaRocca (2012). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Article submitted to Biometric Methodology}.
 }
+
 
 \author{
   Davide Altomare (\email{davide.altomare@gmail.com}).
@@ -51,14 +52,14 @@ FBF_RS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 \examples{
 
+## Not run: 
+
 data(SimDag6) 
 
 Corr=dataSim6$SimCorr[[1]]
 nobs=50
 q=ncol(Corr)
 Gt=dataSim6$TDag
-
-# Regression of Y(q) on Y(q-1),...,Y(1)
 
 Res_search=FBF_RS(Corr, nobs, matrix(0,1,(q-1)), 1, 0.01, 1000, 10)
 M_q=Res_search$M_q
@@ -72,7 +73,10 @@ M_med=M_q
 M_med[M_q>=0.5]=1
 M_med[M_q<0.5]=0 #median probability model
 
-sum(sum(abs(M_med-Mt))) #Structural Hamming Distance between the true DAG and the median probability DAG
+#Structural Hamming Distance between the true DAG and the median probability DAG
+sum(sum(abs(M_med-Mt))) 
+
+## End(Not run)
 
 }
 

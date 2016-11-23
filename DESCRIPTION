@@ -1,21 +1,16 @@
 Package: FBFsearch
 Type: Package
-Title: Algorithm for searching the space of Gaussian directed acyclic
-        graphical models through moment fractional Bayes factors
-Version: 1.0
-Date: 2013-04-12
+Title: Algorithm for Searching the Space of Gaussian Directed Acyclic
+        Graph Models Through Moment Fractional Bayes Factors
+Version: 1.1
+Date: 2016-11-21
 Author: Davide Altomare, Guido Consonni and Luca La Rocca
 Maintainer: Davide Altomare <davide.altomare@gmail.com>
-Description: We propose an objective Bayesian algorithm for searching
-        the space of Gaussian directed acyclic graphical models when
-        the variables are assumed to satisfy a given ordering. The
-        approach used is based on non-local parameter priors and thus
-        it is suitable for learning sparse graphs. The algorithm is
-        implemented in C++ using the open-source library Armadillo.
+Description: We propose an objective Bayesian algorithm for searching the space of Gaussian directed acyclic graph (DAG) models. The algorithm proposed makes use of moment fractional Bayes factors (MFBF) and thus it is suitable for learning sparse graph. The algorithm is implemented by using Armadillo: an open-source C++ linear algebra library. 
 License: GPL (>= 2)
-Depends: Rcpp (>= 0.9.13), RcppArmadillo (>= 0.3.2.4)
+Imports: Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, RcppArmadillo
-Packaged: 2013-04-12 18:55:49 UTC; davide
 NeedsCompilation: yes
+Packaged: 2016-11-22 19:34:42 UTC; a458057
 Repository: CRAN
-Date/Publication: 2013-04-13 06:39:46
+Date/Publication: 2016-11-23 01:29:18

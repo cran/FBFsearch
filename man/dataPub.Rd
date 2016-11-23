@@ -24,6 +24,6 @@ edition). \emph{Cambridge, MA: The MIT Press}. pages 1-16.
 Drton, M. and Perlman, M. D. (2008). A SINful approach to Gaussian graphical model
 selection. \emph{J. Statist. Plann. Inference} 138, 1179-1200.
 
-D. Altomare, G. Consonni and L. La Rocca (2013). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Biometrics}.
+D. Altomare, G. Consonni and L. La Rocca (2012). Objective Bayesian search of Gaussian directed acyclic graphical models for ordered variables with non-local priors. \emph{Article submitted to Biometric Methodology}.
 }
 \keyword{datasets}
