@@ -52,8 +52,6 @@ FBF_RS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 \examples{
 
-## Not run: 
-
 data(SimDag6) 
 
 Corr=dataSim6$SimCorr[[1]]
@@ -75,8 +73,6 @@ M_med[M_q<0.5]=0 #median probability model
 
 #Structural Hamming Distance between the true DAG and the median probability DAG
 sum(sum(abs(M_med-Mt))) 
-
-## End(Not run)
 
 }
 

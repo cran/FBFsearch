@@ -53,8 +53,6 @@ FBF_GS(Corr, nobs, G_base, h, C, n_tot_mod, n_hpp)
 
 \examples{
 
-## Not run:
-
 data(SimDag6) 
 
 Corr=dataSim6$SimCorr[[1]]
@@ -78,8 +76,6 @@ pp_high=M_P[1] #Posterior Probability of the HPP
 sum(sum(abs(G_med-Gt)))
 #Structural Hamming Distance between the true DAG and the highest probability DAG 
 sum(sum(abs(G_high-Gt)))
-
-## End(Not run) 
 
 
 }

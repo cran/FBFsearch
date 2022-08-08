@@ -4,6 +4,8 @@
 #include <RcppArmadillo.h>
 #include "FBFsearch_H.h"
 
+#define uli unsigned long int
+
 using namespace std;
 using namespace arma;
 
@@ -20,7 +22,7 @@ using namespace arma;
 
 //FUNZIONE LOGARITMO FATTORIALE
 
-double lfactorial(int n)
+double lfactorial(uli n)
 {
   
  double x;
@@ -34,7 +36,7 @@ double lfactorial(int n)
 
 //FUNZIONE LOGARITMO COEFFICIENTE BINOMIALE
 
-double lchoose(int n, int k)
+double lchoose(uli n, uli k)
 {
   
   double x;
@@ -82,7 +84,7 @@ vec sub_elem_eq(vec v, vec w, double x)
 
 mat sub_mat(mat M, vec vr, vec vc)
 {
-  int r, c, lvr, lvc;
+  uli r, c, lvr, lvc;
   lvr=vr.n_elem;
   lvc=vc.n_elem;
   mat Q(lvr,lvc);
@@ -104,7 +106,7 @@ mat sub_mat(mat M, vec vr, vec vc)
 mat pow_vec(vec v, vec w)
 {
 
-   int k, lv; 
+   uli k, lv; 
    vec vv;
 
    lv=v.n_elem;
@@ -124,11 +126,11 @@ mat pow_vec(vec v, vec w)
 
 //FUNZIONE CHE AGGIUNGE IL MODELLO M ALL'ALBERO
 
-field<mat> add_to_tree(vec M, double lM, int nM, mat tree, double ltree)
+field<mat> add_to_tree(vec M, double lM, uli nM, mat tree, double ltree)
 {
 
- int j;
- int k;
+ uli j;
+ uli k;
 
  field<mat> Res(2,1);
 
@@ -146,9 +148,9 @@ field<mat> add_to_tree(vec M, double lM, int nM, mat tree, double ltree)
 
  }
 
- int z;
- int h;
- int iM=datum::nan;
+ uli z;
+ uli h;
+ uli iM=0;
 
  if(nM>0){ //if1
    
@@ -203,10 +205,10 @@ field<mat> add_to_tree(vec M, double lM, int nM, mat tree, double ltree)
 
 //FUNZIONE CHE RESTITUISCE I MOVIMENTI POSSIBILI DA M DATI I MODELLI PRECEDENTEMENTE VISITATI
 
-vec mov_tree(mat tree, vec M, int lM, vec vlM, int max_lM)
+vec mov_tree(mat tree, vec M, uli lM, vec vlM, uli max_lM)
 {
 
- int q; int k; int z; int h; int iM2;
+ uli q; uli k; uli z; uli h; uli iM2;
  double sumM;
  vec mov(lM+1); uvec imov; uvec umov; vec mov2; vec M2;
  
@@ -261,7 +263,7 @@ vec mov_tree(mat tree, vec M, int lM, vec vlM, int max_lM)
 //------------------------------------------------------------------------------------------------------------------------
 
 
-double log_H_h_i(double mu, double sigma, int h, int i)
+double log_H_h_i(double mu, double sigma, uli h, uli i)
 {
 
  double x;
@@ -274,10 +276,10 @@ double log_H_h_i(double mu, double sigma, int h, int i)
 
 
 
-double log_FBF_Ga_Gb(vec G_a, vec G_b, int edge, mat edges, mat YtY, int add, double n, double h)
+double log_FBF_Ga_Gb(vec G_a, vec G_b, uli edge, mat edges, mat YtY, uli add, double n, double h)
 {
 
-  int e1, e2, i, iwi;
+  uli e1, e2, i, iwi;
   double p, b, S2, mu, sigma, logS2, ilogS2, logHhi, ilog4, log_num1, log_den1, log_w_1, log_num0i0, log_den0i0, log_w_0, log_FBF_unpasso;
   vec V1, V2, G1, V11, pa1, pa0, betah, vv(1), z1;
   uvec iw, ipa1;
@@ -316,7 +318,7 @@ double log_FBF_Ga_Gb(vec G_a, vec G_b, int edge, mat edges, mat YtY, int add, do
   S2=conv_to<double>::from(yty-(trans(Xty)*betah));
   
   iw=find(pa1==e1); mu=conv_to<double>::from(betah.elem(iw));
-  iwi=conv_to<int>::from(iw); 
+  iwi=conv_to<uli>::from(iw); 
   //_sigma=invXtX(iwi,iwi); sigma=conv_to<double>::from(_sigma);	
   z1=zeros<vec>(pa1.n_elem);
   z1(iwi)=1;
@@ -385,7 +387,7 @@ double log_FBF_Ga_Gb(vec G_a, vec G_b, int edge, mat edges, mat YtY, int add, do
 field<mat> FBF_heart(double nt, mat YtY, vec vG_base, double lcv, vec vlcv, mat edges, double n_tot_mod, double C, double maxne, double h)
 {
  
-   int t, add, edge, imq, limodR, s;
+   uli t, add, edge, imq, limodR, s;
    double ltree, lM, sum_log_FBF, log_FBF_G, log_pi_G, log_num_MP_G, sum_log_RSMP, n_mod_r, log_FBF_t, log_FBF1;
    vec M_log_FBF, log_num_MP, log_sume, G, imod_R, M_log_RSMP, pRSMP, mov, vlM, qh, G_t, M_q, M_P;
    uvec iw;
@@ -561,9 +563,9 @@ field<mat> FBF_heart(double nt, mat YtY, vec vG_base, double lcv, vec vlcv, mat 
 
 // FUNZIONE CHE RIEMPE LA MATRICE G_fin con gli elementi di M_q 
 
-mat G_fin_fill(mat G, vec vr, int ic, vec x)
+mat G_fin_fill(mat G, vec vr, uli ic, vec x)
 {
-  int k, lvr;
+  uli k, lvr;
   lvr=vr.n_elem;
  
   for(k=0; k<lvr; k++){
@@ -587,7 +589,7 @@ mat G_fin_fill(mat G, vec vr, int ic, vec x)
 RcppExport SEXP FBF_LS(SEXP Corr, SEXP nobs, SEXP G_base, SEXP h, SEXP C, SEXP n_tot_mod)
 {
 
- int k, neq, rr; 
+ uli k, neq, rr; 
  double maxne, Mlogbin_sum, lcv, rrmax, q;
  vec V1, V2, vlcv, vG_base, M_q;
  mat edges, G_fin;
@@ -658,7 +660,7 @@ RcppExport SEXP FBF_LS(SEXP Corr, SEXP nobs, SEXP G_base, SEXP h, SEXP C, SEXP n
 RcppExport SEXP FBF_RS(SEXP Corr, SEXP nobs, SEXP G_base, SEXP h, SEXP C, SEXP n_tot_mod, SEXP n_hpp)
 {
 
- int neq, rr, j; 
+ uli neq, rr, j; 
  double maxne, Mlogbin_sum, lcv, rrmax, q;
  vec V1, V2, vlcv, vG_base, M_q, M_P, iM_P, M_P2;
  mat edges, G_fin, M_G, M_G2;
@@ -738,7 +740,7 @@ RcppExport SEXP FBF_RS(SEXP Corr, SEXP nobs, SEXP G_base, SEXP h, SEXP C, SEXP n
 RcppExport SEXP FBF_GS(SEXP Corr, SEXP nobs, SEXP G_base, SEXP h, SEXP C, SEXP n_tot_mod, SEXP n_hpp)
 {
 
-  int j, k, neq, rr; 
+  uli j, k, neq, rr; 
   double rrmax, Mlogbin_sum, maxne, lcv, nc_edges, nc_edges2, q;
   vec V1, V2, vlcv, vG_base, M_q, M_P, iM_P, M_P2, M_G_j;
   mat edges, G_fin, M_q2, M_G, M_G2, G_fin2, M_G2_j;
