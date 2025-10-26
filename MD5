@@ -1,4 +1,4 @@
-8314d625424befcb11a39f1a2e85ae6e *DESCRIPTION
+8fd7c7819b9ee72c45e6db65ac88d6f2 *DESCRIPTION
 2b0c0f3d52791bf22d4be8406c9321e2 *NAMESPACE
 fe09a09d767182159f148654c65deef0 *R/FBFsearch.R
 a9bee72d09534fb382a289f82cf8345c *data/HumanPw.rda
@@ -19,8 +19,8 @@ f6886f7f4ab593232d73c2197b0e6144 *man/dataSim100.Rd
 78f70ef6a3f5271e68045ee911facfae *man/dataSim50.Rd
 b7df0a80a36d78b7ef69c79915a716c3 *man/dataSim6.Rd
 dad20ecdc2c336b32795a3339370cbb6 *man/dataSimHuman.Rd
-924e117e4670d404d1f1a2487e7d6166 *src/FBFsearch.cpp
-813521d5dcc1eea43ac50558062b4f78 *src/FBFsearch_H.h
+3e434e9ed64e55ad317fe7f6fb7c3778 *src/FBFsearch.cpp
+327350ec0f9eb6be8543a026bf38806f *src/FBFsearch_H.h
 20fa41ab492114031589602cb277eeb0 *src/Makevars
 a73031cbe7d6aaf0bd22e20f6526977d *src/Makevars.win
 da87f773e427437e3a16d7db5a5fe5df *src/init.c
